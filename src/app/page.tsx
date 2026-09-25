@@ -18,6 +18,8 @@ import {
   CaseStudiesModal,
 } from "@/components/modals";
 
+import { CookieConsentBanner } from "@/components/common";
+
 export default function Home() {
   const [activeModal, setActiveModal] = useState<string | null>(null);
   const [notificationsOpen, setNotificationsOpen] = useState(false);
@@ -119,6 +121,9 @@ export default function Home() {
           setActiveModal("contact");
         }}
       />
+
+      {/* Proactive Cookie Consent Banner */}
+      <CookieConsentBanner onOpenPreferences={() => setActiveModal("cookie")} />
     </div>
   );
 }
