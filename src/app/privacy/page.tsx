@@ -192,7 +192,7 @@ function PrivacyContent() {
           <div className="mt-8 px-5">
             <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-2.5 text-xs text-slate-700">
               <div className="flex items-center space-x-2">
-                <PrimeguageLogo className="h-5 w-auto" />
+                <Scale className="w-4 h-4 text-[#1d61e7]" />
                 <span className="font-extrabold text-slate-900 text-xs">
                   Legal Directorate
                 </span>
@@ -229,12 +229,7 @@ function PrivacyContent() {
                     Summary of our Privacy Policy
                   </h1>
                   <p className="text-sm sm:text-base text-slate-800 leading-relaxed font-medium">
-                    This Privacy Policy governs every digital portal, workflow application, application programming interface (API), and cloud infrastructure provided under the Netrom brand by{" "}
-                    <span className="inline-flex items-center gap-1.5 font-bold text-slate-900 align-baseline">
-                      <PrimeguageLogo className="h-4 sm:h-5 w-auto inline-block align-middle" />
-                      Primeguage Solutions Limited
-                    </span>
-                    . It establishes our formal legal posture as both a <strong>Data Controller</strong> (for administrative, commercial, and platform access data) and a <strong>Data Processor</strong> (for all Service Data uploaded and processed by subscribing enterprise tenants).
+                    This Privacy Policy governs every digital portal, workflow application, application programming interface (API), and cloud infrastructure provided under the Netrom brand by <strong>Primeguage Solutions Limited</strong>. It establishes our formal legal posture as both a <strong>Data Controller</strong> (for administrative, commercial, and platform access data) and a <strong>Data Processor</strong> (for all Service Data uploaded and processed by subscribing enterprise tenants).
                   </p>
                   <p className="text-sm sm:text-base text-slate-800 leading-relaxed font-medium">
                     <strong>Our Sovereign Privacy Commitment:</strong> Primeguage Solutions Limited has never sold, leased, traded, or monetized customer data, employee records, or corporate operational telemetry to third-party advertising brokers, and we never will. Netrom’s commercial viability is built exclusively upon transparent enterprise software subscription fees. We execute all data handling in rigorous adherence to the lawful bases, purpose limitations, and security safeguards enacted under the <strong>Nigeria Data Protection Act (NDPA) 2023</strong> and the <strong>ISO/IEC 27701:2019 Privacy Information Management System (PIMS)</strong> standard.
@@ -255,12 +250,7 @@ function PrivacyContent() {
                   </h2>
 
                   <p>
-                    Pursuant to Sections 24 and 25 of the Nigeria Data Protection Act (NDPA) 2023,{" "}
-                    <span className="inline-flex items-center gap-1 font-bold text-slate-900">
-                      <PrimeguageLogo className="h-4 w-auto inline-block align-middle" />
-                      Primeguage Solutions Limited
-                    </span>{" "}
-                    acts as a <strong>Data Controller</strong> in relation to personal data collected directly from individuals navigating our public portals, registering for software demonstrations, executing enterprise subscription agreements, or communicating with our corporate legal and technical support teams.
+                    Pursuant to Sections 24 and 25 of the Nigeria Data Protection Act (NDPA) 2023, <strong>Primeguage Solutions Limited</strong> acts as a <strong>Data Controller</strong> in relation to personal data collected directly from individuals navigating our public portals, registering for software demonstrations, executing enterprise subscription agreements, or communicating with our corporate legal and technical support teams.
                   </p>
 
                   <h3 className="text-base sm:text-lg font-bold text-slate-950 pt-2">
@@ -342,12 +332,7 @@ function PrivacyContent() {
                   </h2>
 
                   <div className="p-4 bg-blue-50 border border-blue-200 rounded-xl text-blue-950 text-xs sm:text-sm font-semibold">
-                    <strong>Legal Status:</strong> When your organization utilizes Netrom applications to digitize and manage internal operations, <strong>your organization is the sole Data Controller</strong>.{" "}
-                    <span className="inline-flex items-center gap-1 font-bold">
-                      <PrimeguageLogo className="h-4 w-auto inline-block align-middle" />
-                      Primeguage Solutions Limited
-                    </span>{" "}
-                    acts strictly as a <strong>Data Processor</strong> in accordance with Sections 24 and 29 of the NDPA 2023 and the ISO/IEC 27018 cloud privacy code of practice.
+                    <strong>Legal Status:</strong> When your organization utilizes Netrom applications to digitize and manage internal operations, <strong>your organization is the sole Data Controller</strong>. <strong>Primeguage Solutions Limited</strong> acts strictly as a <strong>Data Processor</strong> in accordance with Sections 24 and 29 of the NDPA 2023 and the ISO/IEC 27018 cloud privacy code of practice.
                   </div>
 
                   <h3 className="text-base sm:text-lg font-bold text-slate-950 pt-2">
@@ -416,11 +401,7 @@ function PrivacyContent() {
                     3.1 Information Security &amp; ISO/IEC 27001:2022 Safeguards
                   </h3>
                   <p>
-                    <span className="inline-flex items-center gap-1 font-bold text-slate-900">
-                      <PrimeguageLogo className="h-4 w-auto inline-block align-middle" />
-                      Primeguage Solutions Limited
-                    </span>{" "}
-                    maintains an Information Security Management System (ISMS) engineered to align with <strong>ISO/IEC 27001:2022</strong> and <strong>ISO/IEC 27018:2019</strong> controls:
+                    <strong>Primeguage Solutions Limited</strong> maintains an Information Security Management System (ISMS) engineered to align with <strong>ISO/IEC 27001:2022</strong> and <strong>ISO/IEC 27018:2019</strong> controls:
                   </p>
                   <ul className="list-disc pl-6 space-y-2 text-slate-700 text-sm">
                     <li>
@@ -509,12 +490,7 @@ function PrivacyContent() {
                     3.5 Data Protection Officer (DPO) Contact &amp; Statutory SLA
                   </h3>
                   <p>
-                    Pursuant to Section 32 of the NDPA 2023,{" "}
-                    <span className="inline-flex items-center gap-1 font-bold text-slate-900">
-                      <PrimeguageLogo className="h-4 w-auto inline-block align-middle" />
-                      Primeguage Solutions Limited
-                    </span>{" "}
-                    maintains a designated Data Protection Officer responsible for privacy governance and public regulatory interface:
+                    Pursuant to Section 32 of the NDPA 2023, <strong>Primeguage Solutions Limited</strong> maintains a designated Data Protection Officer responsible for privacy governance and public regulatory interface:
                   </p>
 
                   <div className="p-5 bg-slate-50 border border-slate-200 rounded-xl space-y-2 text-xs sm:text-sm font-sans mt-3">
@@ -557,8 +533,8 @@ function PrivacyContent() {
               </div>
 
               <div className="bg-[#f2f4f7] p-6 rounded-xl space-y-3">
-                <div className="flex items-center space-x-2">
-                  <PrimeguageLogo className="h-5 w-auto" />
+                <div className="flex items-center space-x-2 text-[#0066cc]">
+                  <CreditCard className="w-5 h-5" />
                   <h3 className="font-extrabold text-slate-950 text-base">
                     Commercial Governance Overview
                   </h3>
@@ -652,8 +628,8 @@ function PrivacyContent() {
               </div>
 
               <div className="bg-[#f2f4f7] p-6 rounded-xl space-y-3">
-                <div className="flex items-center space-x-2">
-                  <PrimeguageLogo className="h-5 w-auto" />
+                <div className="flex items-center space-x-2 text-[#0066cc]">
+                  <KeyRound className="w-5 h-5" />
                   <h3 className="font-extrabold text-slate-950 text-base">
                     Cryptographic Architecture Mandate
                   </h3>
@@ -750,8 +726,8 @@ function PrivacyContent() {
               </div>
 
               <div className="bg-[#f2f4f7] p-6 rounded-xl space-y-3">
-                <div className="flex items-center space-x-2">
-                  <PrimeguageLogo className="h-5 w-auto" />
+                <div className="flex items-center space-x-2 text-[#0066cc]">
+                  <Scale className="w-5 h-5" />
                   <h3 className="font-extrabold text-slate-950 text-base">
                     Master Services Agreement (MSA) Summary
                   </h3>
@@ -806,8 +782,8 @@ function PrivacyContent() {
               </div>
 
               <div className="bg-[#f2f4f7] p-6 rounded-xl space-y-3">
-                <div className="flex items-center space-x-2">
-                  <PrimeguageLogo className="h-5 w-auto" />
+                <div className="flex items-center space-x-2 text-[#0066cc]">
+                  <Shield className="w-5 h-5" />
                   <h3 className="font-extrabold text-slate-950 text-base">
                     Anti-Surveillance Operating Philosophy
                   </h3>
@@ -878,12 +854,7 @@ function PrivacyContent() {
               </div>
 
               <p className="text-sm">
-                This Data Processing Addendum ("DPA") supplements the Netrom Enterprise Service Agreement between{" "}
-                <span className="inline-flex items-center gap-1 font-bold text-slate-900">
-                  <PrimeguageLogo className="h-4 w-auto inline-block align-middle" />
-                  Primeguage Solutions Limited
-                </span>{" "}
-                ("Processor") and the subscribing corporate entity ("Controller").
+                This Data Processing Addendum ("DPA") supplements the Netrom Enterprise Service Agreement between <strong>Primeguage Solutions Limited</strong> ("Processor") and the subscribing corporate entity ("Controller").
               </p>
 
               <div className="space-y-4 text-xs sm:text-sm text-slate-700">
@@ -970,8 +941,8 @@ function PrivacyContent() {
               </div>
 
               <div className="p-5 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm space-y-3 text-slate-700">
-                <div className="flex items-center space-x-2">
-                  <PrimeguageLogo className="h-5 w-auto" />
+                <div className="flex items-center space-x-2 text-emerald-600">
+                  <CheckCircle2 className="w-5 h-5" />
                   <h3 className="font-extrabold text-slate-950 text-sm">
                     Statutory Compliance Statement
                   </h3>

@@ -42,16 +42,15 @@ export const Footer: React.FC<FooterProps> = ({ onOpenModal }) => {
               </button>
             </div>
 
-            <p className="text-xs text-emerald-200 mt-4 font-bold tracking-wider uppercase flex items-center justify-center gap-1.5 flex-wrap">
-              <span>Netrom by</span>
+            <p className="text-xs text-emerald-200 mt-4 font-bold tracking-wider uppercase">
+              Netrom by{" "}
               <a
                 href="https://primeguage.co/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 underline hover:text-white transition-colors"
+                className="underline hover:text-white transition-colors"
               >
-                <PrimeguageLogo className="h-4 w-auto inline-block brightness-0 invert" />
-                <span>Primeguage Solutions</span>
+                Primeguage Solutions
               </a>
             </p>
           </div>
