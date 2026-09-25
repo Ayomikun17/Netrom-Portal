@@ -47,7 +47,7 @@ export default function Navbar() {
         <a
           href="#"
           className="flex items-center gap-2.5 group"
-          aria-label="PrimeCore home"
+          aria-label="Netrom home"
         >
           <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-electric to-emerald flex items-center justify-center shadow-lg shadow-electric/20 group-hover:shadow-electric/40 transition-shadow">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -57,7 +57,7 @@ export default function Navbar() {
             </svg>
           </div>
           <span className="text-xl font-bold font-heading text-white tracking-tight">
-            Prime<span className="text-gradient">Core</span>
+            Net<span className="text-gradient">rom</span>
           </span>
         </a>
 

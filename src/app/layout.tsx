@@ -15,9 +15,9 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "PrimeCore — The Operating System for Modern Business",
+  title: "Netrom — The Operating System for Modern Business",
   description:
-    "PrimeCore is an enterprise-grade All-In-One Operating System for modern African businesses. Unify HR, Payroll, Procurement, Performance, Analytics and more in one powerful platform.",
+    "Netrom is an enterprise-grade All-In-One Operating System for modern African businesses. Unify HR, Payroll, Procurement, Performance, Analytics and more in one powerful platform.",
   keywords: [
     "enterprise software",
     "business operating system",
@@ -29,11 +29,11 @@ export const metadata: Metadata = {
     "business suite",
   ],
   openGraph: {
-    title: "PrimeCore — The Operating System for Modern Business",
+    title: "Netrom — The Operating System for Modern Business",
     description:
       "Unify your entire business operations — HR, Payroll, Procurement, Performance, Analytics — in one powerful enterprise platform built for modern African businesses.",
-    url: "https://primecore.io",
-    siteName: "PrimeCore",
+    url: "https://netrom.io",
+    siteName: "Netrom",
     type: "website",
     locale: "en_US",
     images: [
@@ -41,13 +41,13 @@ export const metadata: Metadata = {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "PrimeCore Enterprise Dashboard",
+        alt: "Netrom Enterprise Dashboard",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "PrimeCore — The Operating System for Modern Business",
+    title: "Netrom — The Operating System for Modern Business",
     description:
       "Unify your entire business operations in one powerful enterprise platform.",
     images: ["/og-image.jpg"],
@@ -68,7 +68,7 @@ export const metadata: Metadata = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
-  name: "PrimeCore",
+  name: "Netrom",
   applicationCategory: "BusinessApplication",
   operatingSystem: "Web",
   description:
@@ -81,8 +81,8 @@ const jsonLd = {
   },
   publisher: {
     "@type": "Organization",
-    name: "PrimeCore Technologies",
-    url: "https://primecore.io",
+    name: "Netrom Technologies",
+    url: "https://netrom.io",
   },
 };
 

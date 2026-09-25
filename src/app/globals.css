@@ -35,7 +35,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-heading);
 }
 
@@ -52,6 +57,7 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 600;
   text-decoration: none;
 }
+
 .skip-link:focus {
   top: 16px;
 }
@@ -118,6 +124,7 @@ h1, h2, h3, h4, h5, h6 {
 .gradient-border {
   position: relative;
 }
+
 .gradient-border::before {
   content: "";
   position: absolute;
@@ -134,62 +141,150 @@ h1, h2, h3, h4, h5, h6 {
 
 /* ---- Animations ---- */
 @keyframes float {
-  0%, 100% { transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(-20px) rotate(2deg); }
+
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-20px) rotate(2deg);
+  }
 }
 
 @keyframes float-slow {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
 @keyframes pulse-glow {
-  0%, 100% { opacity: 0.4; transform: scale(1); }
-  50% { opacity: 0.8; transform: scale(1.05); }
+
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
 }
 
 @keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
 }
 
 @keyframes scroll-ticker {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 @keyframes gradient-shift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
-.animate-float { animation: float 6s ease-in-out infinite; }
-.animate-float-slow { animation: float-slow 8s ease-in-out infinite; }
-.animate-float-delay { animation: float 6s ease-in-out 2s infinite; }
-.animate-pulse-glow { animation: pulse-glow 3s ease-in-out infinite; }
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-slow {
+  animation: float-slow 8s ease-in-out infinite;
+}
+
+.animate-float-delay {
+  animation: float 6s ease-in-out 2s infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
 .animate-shimmer {
-  background: linear-gradient(90deg, transparent 25%, rgba(255,255,255,0.08) 50%, transparent 75%);
+  background: linear-gradient(90deg, transparent 25%, rgba(255, 255, 255, 0.08) 50%, transparent 75%);
   background-size: 200% 100%;
   animation: shimmer 3s ease-in-out infinite;
 }
-.animate-scroll-ticker { animation: scroll-ticker 30s linear infinite; }
+
+.animate-scroll-ticker {
+  animation: scroll-ticker 30s linear infinite;
+}
+
 .animate-gradient-shift {
   background-size: 200% 200%;
   animation: gradient-shift 4s ease infinite;
+}
+
+/* ---- Subtle Scroll Reveal & Parallax Utilities ---- */
+@keyframes fade-up-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.scroll-reveal {
+  animation: fade-up-reveal 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.parallax-subtle {
+  will-change: transform;
+  transition: transform 0.15s ease-out;
+}
+
+/* Ensure smooth scrolling across browsers */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
 }
 
 /* ---- Scrollbar ---- */
 ::-webkit-scrollbar {
   width: 6px;
 }
+
 ::-webkit-scrollbar-track {
   background: var(--color-navy-950);
 }
+
 ::-webkit-scrollbar-thumb {
   background: var(--color-navy-600);
   border-radius: 3px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-electric);
 }
@@ -201,13 +296,30 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 4px;
 }
 
-/* ---- Reduced Motion ---- */
+/* ---- Reduced Motion (WCAG AA Compliance) ---- */
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
+  html {
+    scroll-behavior: auto !important;
+  }
+
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
+  }
+
+  .scroll-reveal,
+  .animate-float,
+  .animate-float-slow,
+  .animate-float-delay,
+  .animate-pulse-glow,
+  .parallax-subtle {
+    animation: none !important;
+    transform: none !important;
+    transition: none !important;
+    opacity: 1 !important;
   }
 }
 
@@ -215,4 +327,1038 @@ h1, h2, h3, h4, h5, h6 {
 ::selection {
   background: rgba(0, 102, 255, 0.3);
   color: #fff;
+}
+
+
+
+/* ================================================================ */
+/* PRIMECORE JOURNEY                                                */
+/* ================================================================ */
+
+.primecore-journey-section {
+  width: 100%;
+  padding: 100px 24px;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.primecore-journey-wrapper {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+
+/* ================================================================ */
+/* INTRO                                                             */
+/* ================================================================ */
+
+.primecore-journey-intro {
+  max-width: 850px;
+  margin-bottom: 55px;
+}
+
+.primecore-eyebrow {
+  display: inline-block;
+  margin-bottom: 16px;
+
+  color: #8a8a82;
+
+  font-size: 10px;
+  font-weight: 800;
+
+  letter-spacing: 0.2em;
+
+  text-transform: uppercase;
+}
+
+.primecore-journey-intro h2 {
+  max-width: 800px;
+
+  margin: 0 0 18px;
+
+  color: #111714;
+
+  font-size: clamp(2rem, 4vw, 3.5rem);
+
+  font-weight: 800;
+
+  line-height: 1.08;
+
+  letter-spacing: -0.04em;
+}
+
+.primecore-journey-intro p {
+  max-width: 760px;
+
+  margin: 0;
+
+  color: #666861;
+
+  font-size: 15px;
+
+  line-height: 1.8;
+}
+
+
+/* ================================================================ */
+/* MAIN SYSTEM                                                       */
+/* ================================================================ */
+
+.primecore-system {
+  position: relative;
+
+  width: 100%;
+
+  min-height: 720px;
+
+  overflow: hidden;
+
+  border-radius: 32px;
+
+  background:
+    radial-gradient(circle at center,
+      #182019 0%,
+      #111713 48%,
+      #0c110e 100%);
+
+  border: 1px solid rgba(0, 0, 0, 0.08);
+
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.13);
+
+  isolation: isolate;
+}
+
+
+/* ================================================================ */
+/* GRID                                                              */
+/* ================================================================ */
+
+.primecore-system-grid {
+  position: absolute;
+
+  inset: 0;
+
+  opacity: 0.07;
+
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.8) 1px,
+      transparent 1px),
+    linear-gradient(90deg,
+      rgba(255, 255, 255, 0.8) 1px,
+      transparent 1px);
+
+  background-size: 46px 46px;
+
+  pointer-events: none;
+}
+
+.primecore-system-glow {
+  position: absolute;
+
+  width: 500px;
+  height: 500px;
+
+  left: 50%;
+  top: 50%;
+
+  transform: translate(-50%, -50%);
+
+  border-radius: 50%;
+
+  background: rgba(255, 199, 44, 0.08);
+
+  filter: blur(90px);
+
+  pointer-events: none;
+}
+
+
+/* ================================================================ */
+/* CLICKABLE NODES                                                   */
+/* ================================================================ */
+
+.primecore-node {
+  position: absolute;
+
+  z-index: 30;
+
+  width: 165px;
+
+  padding: 15px 16px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  text-align: left;
+
+  border-radius: 14px;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  background: rgba(255, 255, 255, 0.035);
+
+  color: #ffffff;
+
+  backdrop-filter: blur(14px);
+
+  cursor: pointer;
+
+  opacity: 0.65;
+
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease,
+    background 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.primecore-node:hover {
+  opacity: 1;
+
+  background: rgba(255, 255, 255, 0.065);
+
+  border-color: rgba(255, 255, 255, 0.17);
+
+  transform: translateY(-3px);
+}
+
+.primecore-node.is-active {
+  opacity: 1;
+
+  border-color: rgba(255, 199, 44, 0.45);
+
+  background: rgba(255, 199, 44, 0.055);
+
+  box-shadow:
+    0 0 35px rgba(255, 199, 44, 0.06);
+}
+
+.primecore-node-tl {
+  top: 55px;
+  left: 6%;
+}
+
+.primecore-node-tr {
+  top: 65px;
+  right: 6%;
+}
+
+.primecore-node-bl {
+  bottom: 58px;
+  left: 6%;
+}
+
+.primecore-node-br {
+  bottom: 58px;
+  right: 6%;
+}
+
+.primecore-node-category {
+  margin-bottom: 7px;
+
+  color: rgba(255, 255, 255, 0.3);
+
+  font-size: 9px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.18em;
+
+  text-transform: uppercase;
+}
+
+.primecore-node.is-active .primecore-node-category {
+  color: #ffc72c;
+}
+
+.primecore-node-title {
+  color: #ffffff;
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  line-height: 1.3;
+}
+
+.primecore-node-action {
+  margin-top: 7px;
+
+  color: rgba(255, 255, 255, 0.34);
+
+  font-size: 9px;
+
+  line-height: 1.4;
+}
+
+
+/* ================================================================ */
+/* ORBIT SYSTEM                                                      */
+/* ================================================================ */
+
+.primecore-orbit-system {
+  position: absolute;
+
+  width: min(570px, 62vw);
+
+  aspect-ratio: 1 / 1;
+
+  left: 50%;
+  top: 50%;
+
+  transform: translate(-50%, -50%);
+}
+
+
+/* ================================================================ */
+/* ORBIT RINGS                                                       */
+/* ================================================================ */
+
+.primecore-orbit {
+  position: absolute;
+
+  border-radius: 50%;
+
+  pointer-events: none;
+}
+
+.primecore-orbit-outer {
+  inset: 2%;
+
+  border: 1px solid rgba(255, 255, 255, 0.075);
+}
+
+.primecore-orbit-middle {
+  inset: 16%;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.primecore-orbit-inner {
+  inset: 30%;
+
+  border: 1px solid rgba(255, 199, 44, 0.22);
+}
+
+
+/* ================================================================ */
+/* ROTATING ICON SYSTEM                                              */
+/* ================================================================ */
+
+.primecore-icon-system {
+  position: absolute;
+
+  inset: 16%;
+
+  border-radius: 50%;
+
+  animation:
+    primecore-orbit-spin 18s linear infinite;
+}
+
+
+/* ================================================================ */
+/* ICON POSITIONS                                                    */
+/* ================================================================ */
+
+.primecore-icon-position {
+  position: absolute;
+
+  width: 50px;
+  height: 50px;
+}
+
+.primecore-icon-top {
+  top: 0;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+}
+
+.primecore-icon-right {
+  top: 50%;
+  right: 0;
+
+  transform: translate(50%, -50%);
+}
+
+.primecore-icon-bottom {
+  bottom: 0;
+  left: 50%;
+
+  transform: translate(-50%, 50%);
+}
+
+.primecore-icon-left {
+  top: 50%;
+  left: 0;
+
+  transform: translate(-50%, -50%);
+}
+
+
+/* ================================================================ */
+/* ICON CARDS                                                        */
+/* ================================================================ */
+
+.primecore-icon-card {
+  width: 50px;
+  height: 50px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 14px;
+
+  background: #18201b;
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  box-shadow:
+    0 15px 30px rgba(0, 0, 0, 0.3);
+
+  animation:
+    primecore-icon-counter-spin 18s linear infinite;
+}
+
+.primecore-icon-card svg {
+  width: 22px;
+  height: 22px;
+
+  stroke-width: 2;
+}
+
+.primecore-icon-yellow {
+  color: #ffc72c;
+}
+
+.primecore-icon-green {
+  color: #00d6a0;
+}
+
+.primecore-icon-blue {
+  color: #20c7ff;
+}
+
+.primecore-icon-orange {
+  color: #ffc72c;
+}
+
+
+/* ================================================================ */
+/* PRIMECORE CENTRE                                                  */
+/* ================================================================ */
+
+.primecore-centre {
+  position: absolute;
+
+  inset: 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  pointer-events: none;
+}
+
+.primecore-centre-aura {
+  position: absolute;
+
+  width: 250px;
+  height: 250px;
+
+  border-radius: 50%;
+
+  background: rgba(255, 199, 44, 0.10);
+
+  filter: blur(45px);
+
+  animation:
+    primecore-aura-pulse 4s ease-in-out infinite;
+}
+
+.primecore-centre-ring {
+  position: absolute;
+
+  width: 210px;
+  height: 210px;
+
+  border-radius: 50%;
+
+  border: 1px solid rgba(255, 199, 44, 0.2);
+
+  animation:
+    primecore-centre-ring-pulse 4s ease-in-out infinite;
+}
+
+
+/* ================================================================ */
+/* PRIMECORE LOGO                                                    */
+/* ================================================================ */
+
+.primecore-logo-circle {
+  position: relative;
+
+  z-index: 5;
+
+  width: 145px;
+  height: 145px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #ffc72c;
+
+  box-shadow:
+    0 0 70px rgba(255, 199, 44, 0.2);
+}
+
+.primecore-logo-mark {
+  width: 64px;
+
+  display: flex;
+
+  justify-content: center;
+}
+
+.primecore-logo-mark svg {
+  width: 64px;
+  height: 64px;
+}
+
+.primecore-logo-name {
+  margin-top: -3px;
+
+  color: #111714;
+
+  font-size: 8px;
+
+  font-weight: 900;
+
+  letter-spacing: 0.25em;
+}
+
+
+/* ================================================================ */
+/* ACTIVE CONTENT                                                    */
+/* ================================================================ */
+
+.primecore-active-content {
+  position: absolute;
+
+  z-index: 15;
+
+  left: 50%;
+  top: 69%;
+
+  width: 290px;
+
+  transform: translateX(-50%);
+
+  text-align: center;
+}
+
+.primecore-active-panel {
+  animation:
+    primecore-content-in 0.35s ease both;
+}
+
+.primecore-active-label {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color: #ffc72c;
+
+  font-size: 9px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.2em;
+
+  text-transform: uppercase;
+}
+
+.primecore-active-panel p {
+  margin: 0;
+
+  color: rgba(255, 255, 255, 0.46);
+
+  font-size: 12px;
+
+  line-height: 1.7;
+}
+
+
+/* ================================================================ */
+/* STATUS                                                            */
+/* ================================================================ */
+
+.primecore-system-status {
+  position: absolute;
+
+  z-index: 20;
+
+  bottom: 22px;
+
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  color: rgba(255, 255, 255, 0.3);
+
+  font-size: 9px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.2em;
+
+  white-space: nowrap;
+}
+
+.primecore-system-status-dot {
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: #00d6a0;
+
+  box-shadow:
+    0 0 10px rgba(0, 214, 160, 0.7);
+
+  animation:
+    primecore-status-pulse 2s ease-in-out infinite;
+}
+
+
+/* ================================================================ */
+/* FOOTER                                                            */
+/* ================================================================ */
+
+.primecore-journey-footer {
+  display: grid;
+
+  grid-template-columns: auto 1fr minmax(280px, 500px);
+
+  align-items: center;
+
+  gap: 25px;
+
+  margin-top: 35px;
+}
+
+.primecore-journey-footer>span {
+  color: #999a93;
+
+  font-size: 9px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.16em;
+}
+
+.primecore-footer-line {
+  height: 1px;
+
+  background: #e8e8e3;
+}
+
+.primecore-journey-footer p {
+  margin: 0;
+
+  color: #777871;
+
+  font-size: 12px;
+
+  line-height: 1.7;
+}
+
+
+/* ================================================================ */
+/* ANIMATIONS                                                        */
+/* ================================================================ */
+
+@keyframes primecore-orbit-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes primecore-icon-counter-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+@keyframes primecore-aura-pulse {
+
+  0%,
+  100% {
+    transform: scale(0.9);
+    opacity: 0.6;
+  }
+
+  50% {
+    transform: scale(1.08);
+    opacity: 1;
+  }
+}
+
+@keyframes primecore-centre-ring-pulse {
+
+  0%,
+  100% {
+    transform: scale(0.96);
+    opacity: 0.45;
+  }
+
+  50% {
+    transform: scale(1.04);
+    opacity: 1;
+  }
+}
+
+@keyframes primecore-status-pulse {
+
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: scale(0.85);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+}
+
+@keyframes primecore-content-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* ================================================================ */
+/* TABLET                                                            */
+/* ================================================================ */
+
+@media (max-width: 900px) {
+
+  .primecore-system {
+    min-height: 680px;
+  }
+
+  .primecore-orbit-system {
+    width: min(530px, 68vw);
+  }
+
+  .primecore-node {
+    width: 145px;
+  }
+
+  .primecore-node-tl,
+  .primecore-node-bl {
+    left: 3%;
+  }
+
+  .primecore-node-tr,
+  .primecore-node-br {
+    right: 3%;
+  }
+
+  .primecore-journey-footer {
+    grid-template-columns: 1fr;
+
+    gap: 12px;
+  }
+
+  .primecore-footer-line {
+    width: 100%;
+  }
+}
+
+
+/* ================================================================ */
+/* MOBILE                                                            */
+/* ================================================================ */
+
+@media (max-width: 640px) {
+
+  .primecore-journey-section {
+    padding: 70px 14px;
+  }
+
+  .primecore-journey-intro {
+    margin-bottom: 35px;
+  }
+
+  .primecore-journey-intro h2 {
+    font-size: 2rem;
+
+    line-height: 1.12;
+  }
+
+  .primecore-journey-intro p {
+    font-size: 13px;
+
+    line-height: 1.7;
+  }
+
+
+  /* -------------------------------------------------------------- */
+  /* Main system                                                      */
+  /* -------------------------------------------------------------- */
+
+  .primecore-system {
+    min-height: 620px;
+
+    border-radius: 24px;
+  }
+
+
+  /* -------------------------------------------------------------- */
+  /* Orbit                                                            */
+  /* -------------------------------------------------------------- */
+
+  .primecore-orbit-system {
+    width: min(88vw, 400px);
+  }
+
+
+  /* -------------------------------------------------------------- */
+  /* Nodes                                                            */
+  /* -------------------------------------------------------------- */
+
+  .primecore-node {
+    width: 105px;
+
+    padding: 10px;
+
+    border-radius: 10px;
+  }
+
+  .primecore-node-tl {
+    top: 45px;
+    left: 10px;
+  }
+
+  .primecore-node-tr {
+    top: 45px;
+    right: 10px;
+  }
+
+  .primecore-node-bl {
+    bottom: 48px;
+    left: 10px;
+  }
+
+  .primecore-node-br {
+    bottom: 48px;
+    right: 10px;
+  }
+
+  .primecore-node-category {
+    font-size: 7px;
+
+    margin-bottom: 5px;
+  }
+
+  .primecore-node-title {
+    font-size: 10px;
+  }
+
+  .primecore-node-action {
+    display: none;
+  }
+
+
+  /* -------------------------------------------------------------- */
+  /* Icons                                                            */
+  /* -------------------------------------------------------------- */
+
+  .primecore-icon-position {
+    width: 38px;
+    height: 38px;
+  }
+
+  .primecore-icon-card {
+    width: 38px;
+    height: 38px;
+
+    border-radius: 10px;
+  }
+
+  .primecore-icon-card svg {
+    width: 17px;
+    height: 17px;
+  }
+
+
+  /* -------------------------------------------------------------- */
+  /* Logo                                                             */
+  /* -------------------------------------------------------------- */
+
+  .primecore-logo-circle {
+    width: 108px;
+    height: 108px;
+  }
+
+  .primecore-logo-mark {
+    width: 48px;
+  }
+
+  .primecore-logo-mark svg {
+    width: 48px;
+    height: 48px;
+  }
+
+  .primecore-logo-name {
+    font-size: 6px;
+
+    letter-spacing: 0.2em;
+  }
+
+  .primecore-centre-ring {
+    width: 155px;
+    height: 155px;
+  }
+
+
+  /* -------------------------------------------------------------- */
+  /* Active content                                                   */
+  /* -------------------------------------------------------------- */
+
+  .primecore-active-content {
+    top: 69%;
+
+    width: 190px;
+  }
+
+  .primecore-active-label {
+    font-size: 7px;
+
+    letter-spacing: 0.14em;
+  }
+
+  .primecore-active-panel p {
+    font-size: 9px;
+
+    line-height: 1.55;
+  }
+
+
+  /* -------------------------------------------------------------- */
+  /* Status                                                            */
+  /* -------------------------------------------------------------- */
+
+  .primecore-system-status {
+    bottom: 17px;
+
+    font-size: 7px;
+
+    letter-spacing: 0.13em;
+  }
+
+  .primecore-system-status-dot {
+    width: 5px;
+    height: 5px;
+  }
+
+
+  /* -------------------------------------------------------------- */
+  /* Footer                                                            */
+  /* -------------------------------------------------------------- */
+
+  .primecore-journey-footer {
+    margin-top: 25px;
+  }
+
+  .primecore-journey-footer>span {
+    font-size: 8px;
+  }
+
+  .primecore-journey-footer p {
+    font-size: 11px;
+  }
+}
+
+
+/* ================================================================ */
+/* VERY SMALL SCREENS                                                */
+/* ================================================================ */
+
+@media (max-width: 390px) {
+
+  .primecore-system {
+    min-height: 580px;
+  }
+
+  .primecore-node {
+    width: 94px;
+  }
+
+  .primecore-node-title {
+    font-size: 9px;
+  }
+
+  .primecore-orbit-system {
+    width: 82vw;
+  }
+
+  .primecore-active-content {
+    width: 170px;
+  }
+}
+
+
+/* ================================================================ */
+/* REDUCED MOTION                                                    */
+/* ================================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .primecore-icon-system,
+  .primecore-icon-card,
+  .primecore-centre-aura,
+  .primecore-centre-ring,
+  .primecore-system-status-dot,
+  .primecore-active-panel {
+    animation: none !important;
+  }
+
 }
