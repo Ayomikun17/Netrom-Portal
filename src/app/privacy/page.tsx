@@ -7,12 +7,15 @@ import {
   ChevronDown,
   ChevronRight,
   ArrowLeft,
-  ExternalLink,
   Shield,
   Lock,
   Globe,
   Mail,
   CheckCircle,
+  FileText,
+  Server,
+  AlertCircle,
+  Building,
 } from "lucide-react";
 import { NetromLogo } from "@/components/common";
 
@@ -31,54 +34,54 @@ function PrivacyContent() {
       setActiveSubTab("terms-service");
     } else if (tab === "security") {
       setActiveCategory("security");
-      setActiveSubTab("overview");
+      setActiveSubTab("sec-overview");
     } else if (tab === "compliance") {
       setActiveCategory("compliance");
-      setActiveSubTab("ndpa");
+      setActiveSubTab("comp-ndpa");
     }
   }, [searchParams]);
 
-  // Sidebar navigation sections matching Zoho's layout
+  // Sidebar navigation sections matching the enterprise legal portal layout
   const navSections = [
     {
       id: "terms",
       title: "Terms",
       items: [
-        { id: "terms-service", title: "Terms of Service" },
-        { id: "terms-payment", title: "Subscription & Payments" },
+        { id: "terms-service", title: "Enterprise Service Agreement" },
+        { id: "terms-payment", title: "Subscription & Commercial Terms" },
       ],
     },
     {
       id: "privacy",
       title: "Privacy",
       items: [
-        { id: "summary", title: "Privacy Policy" },
-        { id: "cookies", title: "Cookie Policy" },
-        { id: "dpa", title: "Data Processing Addendum" },
+        { id: "summary", title: "Netrom Privacy Policy" },
+        { id: "cookies", title: "Cookie & Tracking Policy" },
+        { id: "dpa", title: "Data Processing Addendum (DPA)" },
       ],
     },
     {
       id: "security",
       title: "Security",
       items: [
-        { id: "sec-overview", title: "Security Overview" },
-        { id: "sec-encryption", title: "Encryption & Architecture" },
+        { id: "sec-overview", title: "ISO/IEC 27001 Security Framework" },
+        { id: "sec-encryption", title: "Cryptographic Controls & Storage" },
       ],
     },
     {
       id: "compliance",
       title: "Compliance",
       items: [
-        { id: "comp-ndpa", title: "NDPA 2023 (Nigeria)" },
-        { id: "comp-gdpr", title: "Global Privacy Standards" },
+        { id: "comp-ndpa", title: "NDPA 2023 Statutory Compliance" },
+        { id: "comp-gdpr", title: "International Transfer & Safeguards" },
       ],
     },
     {
       id: "policies",
       title: "Policies",
       items: [
-        { id: "pol-acceptable", title: "Acceptable Use Policy" },
-        { id: "pol-vulnerability", title: "Vulnerability Disclosure" },
+        { id: "pol-acceptable", title: "Acceptable Use Policy (AUP)" },
+        { id: "pol-vulnerability", title: "Coordinated Vulnerability Disclosure" },
       ],
     },
   ];
@@ -104,7 +107,7 @@ function PrivacyContent() {
               className="text-xs sm:text-sm font-semibold text-gray-600 hover:text-[#1d61e7] flex items-center gap-1.5 transition-colors"
             >
               <ArrowLeft className="w-4 h-4" />
-              <span>Back to Netrom</span>
+              <span>Back to Netrom Workspace</span>
             </Link>
           </div>
         </div>
@@ -114,8 +117,8 @@ function PrivacyContent() {
       <div className="flex-1 max-w-7xl w-full mx-auto flex flex-col md:flex-row">
         {/* Left Sidebar Menu */}
         <aside className="w-full md:w-64 border-b md:border-b-0 md:border-r border-gray-200 bg-white shrink-0 py-4 md:py-6">
-          <div className="px-4 pb-2 text-[11px] font-bold uppercase tracking-wider text-gray-400">
-            Legal &amp; Compliance
+          <div className="px-5 pb-2 text-[11px] font-bold uppercase tracking-wider text-gray-400">
+            Legal &amp; Governance Index
           </div>
           <nav className="space-y-1">
             {navSections.map((sec) => {
@@ -124,9 +127,7 @@ function PrivacyContent() {
                 <div key={sec.id} className="border-b border-gray-100 last:border-0">
                   <button
                     onClick={() => {
-                      if (activeCategory === sec.id) {
-                        // toggle
-                      } else {
+                      if (activeCategory !== sec.id) {
                         setActiveCategory(sec.id);
                         setActiveSubTab(sec.items[0].id);
                       }
@@ -175,148 +176,324 @@ function PrivacyContent() {
             <div className="p-3.5 bg-gray-50 border border-gray-200 rounded-xl space-y-2 text-xs text-gray-600">
               <div className="font-bold text-gray-900 flex items-center gap-1.5">
                 <Shield className="w-4 h-4 text-[#1d61e7]" />
-                <span>Need legal assistance?</span>
+                <span>Statutory Compliance</span>
               </div>
-              <p className="text-[11px] leading-relaxed">
-                Reach our corporate legal and compliance team directly at:
+              <p className="text-[11px] leading-relaxed text-gray-500">
+                Audited under the Nigeria Data Protection Act (NDPA) 2023 &amp; ISO/IEC 27701:2019 standards.
               </p>
-              <a
-                href="mailto:privacy@netrom.ng"
-                className="text-[#1d61e7] font-semibold text-xs hover:underline block"
-              >
-                privacy@netrom.ng
-              </a>
+              <div className="pt-1 text-[11px]">
+                <strong className="text-gray-700">DPO Office:</strong>
+                <a
+                  href="mailto:dpo@primeguage.co"
+                  className="text-[#1d61e7] hover:underline block truncate"
+                >
+                  dpo@primeguage.co
+                </a>
+              </div>
             </div>
           </div>
         </aside>
 
         {/* Right Main Content Pane */}
         <main className="flex-1 min-w-0 bg-white">
+          {/* TAB: PRIVACY POLICY SUMMARY & DETAILED POLICY */}
           {activeCategory === "privacy" && activeSubTab === "summary" && (
             <div>
-              {/* Light Grey Banner matching Image 2 */}
+              {/* Executive Summary Box matching the reference design */}
               <div className="bg-[#f2f4f7] px-6 sm:px-12 py-10 sm:py-12 border-b border-gray-200/80">
                 <div className="max-w-3xl space-y-5">
                   <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-gray-900 tracking-tight">
                     Summary of our Privacy Policy
                   </h1>
                   <p className="text-sm sm:text-base text-gray-700 leading-relaxed font-normal">
-                    It covers every Netrom website that links here, and all of the products and services contained on those websites. The detailed policy follows the same structure as this summary and constitutes the actual legal document.
+                    This Privacy Policy governs every Netrom web portal, application, API, and digital service provided by <strong>Primeguage Solutions Limited</strong>. It outlines our legal posture as both a <strong>Data Controller</strong> (for information relating directly to your account, commercial relationship, and platform access) and as a <strong>Data Processor</strong> (for Service Data uploaded and managed by your organization).
                   </p>
                   <p className="text-sm sm:text-base text-gray-700 leading-relaxed font-normal">
-                    <strong>Our privacy commitment:</strong> Netrom has never sold your information to someone else for advertising, or made money by showing you other people's ads, and we never will. This has been our approach from day one, and we remain committed to it. This policy tells you what information we collect from you, what we do with it, who can access it, and what you can do about it.
+                    <strong>Our Sovereign Privacy Commitment:</strong> Netrom operates exclusively as an enterprise software provider. We do not monetize personal data, lease corporate records to commercial brokers, or deploy behavioral ad-tracking technologies across our workspace. We adhere to the foundational principles of lawful processing, purpose specification, data minimization, and technical security prescribed by the <strong>Nigeria Data Protection Act (NDPA) 2023</strong> and the <strong>ISO/IEC 27701 Privacy Information Management System (PIMS)</strong> standard.
                   </p>
                 </div>
               </div>
 
-              {/* White Detailed Policy Content Area matching Image 2 */}
-              <div className="px-6 sm:px-12 py-8 max-w-4xl space-y-10 text-gray-700 leading-relaxed font-normal text-sm sm:text-base">
-                {/* Last Updated Date right aligned */}
+              {/* Main Policy Body */}
+              <div className="px-6 sm:px-12 py-8 max-w-4xl space-y-12 text-gray-700 leading-relaxed font-normal text-sm sm:text-base">
                 <div className="text-right text-xs sm:text-sm text-gray-500 font-medium">
-                  Last updated on: 22nd Dec 2025.
+                  Last updated on: 1st January 2026
                 </div>
 
                 {/* PART I */}
-                <section className="space-y-4">
+                <section className="space-y-5">
                   <h2 className="text-xl sm:text-2xl font-bold text-[#0066cc]">
-                    Part I – Information Netrom collects and controls
+                    Part I – Information Netrom Collects and Controls
                   </h2>
 
                   <p>
-                    We only collect the information that we actually need. Some of that is information that you actively give us when you sign up for an account, register for an event, ask for customer support, or buy something from us. We store your name and contact information, but we don't store credit card numbers (except with your permission and in one of our secured payment gateways).
+                    In accordance with Section 24 and Section 25 of the NDPA 2023, Primeguage Solutions Limited acts as a <strong>Data Controller</strong> with respect to the personal information collected directly from individuals who visit our public portals, request product demonstrations, subscribe as account administrators, or communicate with our support personnel.
                   </p>
 
-                  <p>
-                    When you visit one of our websites or use our software, we automatically log some basic information like how you got to the site, where you navigated within it, and what features and settings you use. We use this information to improve our websites and services and to drive new product development.
-                  </p>
-
-                  <p>
-                    Sometimes we receive information indirectly. If you ask about our products through one of our referral programs or reselling partners, or sign in to one of our products through an authentication service provider like LinkedIn or Google, they'll pass on your contact information to us. We'll use that information to address the request that you made. If you engage with our brand on social media (for instance, liking, retweeting, or mentioning us), we will have access to your interactions and profile information. We'll still have that information even if you later remove it from the social media site.
-                  </p>
-
-                  <h3 className="text-lg font-bold text-gray-900 pt-2">
-                    What we do with your information
+                  <h3 className="text-base sm:text-lg font-bold text-gray-900 pt-1">
+                    1. Categories of Information Collected Directly from You
                   </h3>
                   <p>
-                    We use your information to provide the services you've requested, create and maintain your accounts, and keep an eye out for unauthorized activity on your accounts. We also use it to communicate with you about the products you're currently using, your customer support requests, new products you may like, chances for you to give us feedback, and policy updates. We analyze the information we collect to understand how users use our products and services, to monitor and prevent problems, and to improve our products and services.
+                    We collect personal data that you explicitly provide when creating an enterprise account or engaging our sales and technical support teams:
                   </p>
+                  <ul className="list-disc pl-6 space-y-2 text-gray-600 text-sm">
+                    <li>
+                      <strong>Account &amp; Administrative Data:</strong> Full legal name, official corporate email address, corporate telephone number, job designation, organization name, registered business address, and administrative credentials.
+                    </li>
+                    <li>
+                      <strong>Commercial &amp; Billing Data:</strong> Registered entity name, Tax Identification Number (TIN), billing contacts, and payment transaction references. Sensitive payment card numbers are processed via certified PCI-DSS Level 1 compliant payment settlement gateways (e.g., Paystack, Flutterwave); Netrom never captures or stores raw Card Verification Values (CVV) on our application servers.
+                    </li>
+                    <li>
+                      <strong>Commercial Inquiries &amp; Consultations:</strong> Records of communications, demo requests, onboarding schedules, support ticket attachments, and webinar registrations.
+                    </li>
+                  </ul>
+
+                  <h3 className="text-base sm:text-lg font-bold text-gray-900 pt-2">
+                    2. Information Collected Automatically Through Platform Telemetry
+                  </h3>
                   <p>
-                    We are required to have a lawful basis for collecting and processing your information. In most cases, we have your consent or we need the information to provide the service you've requested from us. When that's not the case, we must demonstrate that we have another lawful basis, such as our legitimate business interests, or statutory obligations under the <strong>Nigeria Data Protection Act (NDPA 2023)</strong>.
+                    To ensure service availability, monitor infrastructure performance, and protect our environment against cyber incidents, our systems automatically generate telemetry logs:
+                  </p>
+                  <ul className="list-disc pl-6 space-y-2 text-gray-600 text-sm">
+                    <li>
+                      <strong>Device and Network Identifiers:</strong> Internet Protocol (IP) address, operating system architecture, browser engine user-agent, language locale, and routing information.
+                    </li>
+                    <li>
+                      <strong>Operational &amp; Audit Logs:</strong> Timestamps of successful and failed authentication attempts, multi-factor authentication (MFA) challenges, password resets, and session lease periods.
+                    </li>
+                    <li>
+                      <strong>Diagnostic Metrics:</strong> Aggregated page render latencies, API throughput, and error codes captured through first-party telemetry tools to diagnose stability bottlenecks.
+                    </li>
+                  </ul>
+
+                  <h3 className="text-base sm:text-lg font-bold text-gray-900 pt-2">
+                    3. Information Received from Authorized Third Parties
+                  </h3>
+                  <p>
+                    If your organization enables enterprise Single Sign-On (SSO) integrations (such as Microsoft Entra ID, Google Workspace, or Okta SAML 2.0), we receive verified authentication tokens, directory profile names, and official email addresses strictly to validate authorized access to your tenant.
                   </p>
 
+                  <h3 className="text-base sm:text-lg font-bold text-gray-900 pt-2">
+                    4. Lawful Bases for Processing under Section 24 of the NDPA 2023
+                  </h3>
                   <p>
-                    You can decline certain kinds of information use either by not providing the information in the first place or by opting out later. You can also disable cookies to prevent your browser from giving us information, but if you do so, certain website features may not work properly. We completely disable non-essential and intrusive third-party cookies on all Netrom websites and products.
+                    Netrom processes personal data in our capacity as a Data Controller only where a recognized legal basis exists under Nigerian law:
                   </p>
-
-                  <p>
-                    We limit access to your personal information to our employees and contractors who have a legitimate need to use it. If we share your information with other parties (like developers, service providers, registrar partners, and resellers), they must have appropriate security measures and a valid reason to use your information, typically to serve you.
-                  </p>
-
-                  <p>
-                    Under the NDPA 2023, you have certain rights with respect to your information (including access, rectification, erasure, restriction of processing, data portability, and the right to object or complain to the Nigeria Data Protection Commission). Netrom undertakes to provide you with the same rights no matter where you choose to live.
-                  </p>
-
-                  <p>
-                    We keep your personal information for as long as it is required for the purposes stated in this Privacy Policy. When we no longer have a legitimate need to process your information, we will delete, anonymize, or isolate your information, whichever is appropriate.
-                  </p>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs sm:text-sm pt-1">
+                    <div className="p-3.5 bg-gray-50 border border-gray-200 rounded-xl space-y-1">
+                      <strong className="text-gray-900 block">Performance of a Contract</strong>
+                      <p className="text-gray-600 text-xs">
+                        Provisioning workspace environments, authenticating authorized staff, fulfilling Service Level Agreements (SLAs), and processing corporate subscriptions.
+                      </p>
+                    </div>
+                    <div className="p-3.5 bg-gray-50 border border-gray-200 rounded-xl space-y-1">
+                      <strong className="text-gray-900 block">Legal &amp; Regulatory Obligations</strong>
+                      <p className="text-gray-600 text-xs">
+                        Retaining financial ledgers for corporate tax audits under the Companies and Allied Matters Act (CAMA 2020) and complying with statutory directives.
+                      </p>
+                    </div>
+                    <div className="p-3.5 bg-gray-50 border border-gray-200 rounded-xl space-y-1">
+                      <strong className="text-gray-900 block">Legitimate Enterprise Interests</strong>
+                      <p className="text-gray-600 text-xs">
+                        Defending against DDoS attacks, detecting credential compromise, validating software integrity, and maintaining high platform reliability.
+                      </p>
+                    </div>
+                    <div className="p-3.5 bg-gray-50 border border-gray-200 rounded-xl space-y-1">
+                      <strong className="text-gray-900 block">Explicit Consent</strong>
+                      <p className="text-gray-600 text-xs">
+                        Sending optional product roadmap updates, release notes, or whitepapers, from which you may freely unsubscribe at any time.
+                      </p>
+                    </div>
+                  </div>
                 </section>
 
                 <hr className="border-gray-200" />
 
                 {/* PART II */}
-                <section className="space-y-4">
+                <section className="space-y-5">
                   <h2 className="text-xl sm:text-2xl font-bold text-[#0066cc]">
-                    Part II – Information that Netrom processes on your behalf
+                    Part II – Information Netrom Processes on Your Behalf (Service Data)
                   </h2>
 
-                  <p>
-                    If you handle other people's data using Netrom apps, such as information about your employees, financial requisitions, payroll numbers, tasks, or customers, you are entrusting that data to us. We refer to this as <strong>Service Data</strong>.
-                  </p>
+                  <div className="p-4 bg-blue-50 border border-blue-200 rounded-xl text-blue-950 text-xs sm:text-sm font-medium">
+                    <strong>Legal Status:</strong> When your organization uses Netrom applications to digitize and manage internal operations, <strong>your organization is the Data Controller</strong>. Primeguage Solutions Limited operates strictly as a <strong>Data Processor</strong> under Section 24 and Section 29 of the NDPA 2023 and ISO/IEC 27018 cloud privacy standards.
+                  </div>
 
+                  <h3 className="text-base sm:text-lg font-bold text-gray-900 pt-1">
+                    1. Scope and Nature of Service Data
+                  </h3>
                   <p>
-                    You own your service data. We protect it, limit access to it, and only process it according to your instructions. You may access it, share it through third-party integrations, and request that we export or delete it.
+                    Service Data encompasses all operational records, files, communications, and structured entries submitted, transmitted, or stored within your organization's Netrom instance. Depending on the modules your organization activates, this includes:
                   </p>
+                  <ul className="list-disc pl-6 space-y-2 text-gray-600 text-sm">
+                    <li>
+                      <strong>Workforce &amp; Human Capital Records:</strong> Employee profiles, staff identity numbers, department designations, date of employment, leave requests, attendance logs, and internal performance appraisals.
+                    </li>
+                    <li>
+                      <strong>Payroll &amp; Financial Disclosures:</strong> Salary schedules, allowances, statutory deductions (PAYE, pension, NHF), employee bank account details (NIBSS routing), and payroll disbursement authorizations.
+                    </li>
+                    <li>
+                      <strong>Requisitions &amp; Procurement Ledgers:</strong> Purchase orders, internal fund requests, expense vouchers, vendor contracts, receipts, and multi-tier approval audit trails.
+                    </li>
+                    <li>
+                      <strong>Strategic Execution &amp; Task Deliverables:</strong> Corporate OKRs, departmental milestones, project task boards, internal approvals, and uploaded documents in Netrom Files.
+                    </li>
+                  </ul>
 
+                  <h3 className="text-base sm:text-lg font-bold text-gray-900 pt-2">
+                    2. Netrom's Legal Obligations as Data Processor
+                  </h3>
                   <p>
-                    We hold the data in your account as long as you choose to use Netrom Services. After you terminate your account, your data will be safely held for a 90-day grace period to allow you to export your records, after which it will be permanently deleted from our active databases and rolling backups.
+                    Pursuant to the NDPA 2023 and ISO/IEC 27701 PII Processor specifications, Netrom undertakes the following binding obligations:
                   </p>
+                  <div className="space-y-3 text-xs sm:text-sm text-gray-600">
+                    <p>
+                      <strong>A. Documented Instructions Only:</strong> We process Service Data strictly in accordance with your organization’s administrative configurations, contracted service scope, and explicit written directives.
+                    </p>
+                    <p>
+                      <strong>B. Zero Secondary Use or Model Training:</strong> We will never mine, scan, index, commercialize, or use your organization's confidential Service Data (including payroll tables, expense vouchers, or personnel files) for targeted marketing, external commercial exploitation, or training third-party public AI models.
+                    </p>
+                    <p>
+                      <strong>C. Cryptographic Tenant Segregation:</strong> Every organization's records are logically isolated at the database layer. Database partition keys and tenant authentication guards prevent cross-tenant queries or unauthorized data exposure.
+                    </p>
+                    <p>
+                      <strong>D. Confidentiality Commitments:</strong> All Netrom personnel with authorized administrative access to hosting infrastructure are subject to rigorous background vetting, mandatory NDPA privacy training, and binding non-disclosure agreements.
+                    </p>
+                  </div>
 
+                  <h3 className="text-base sm:text-lg font-bold text-gray-900 pt-2">
+                    3. Data Subject Access Requests (DSAR) Protocol
+                  </h3>
                   <p>
-                    If you are in Nigeria or the European Union and you believe that someone has entrusted your information to us for processing (for instance, your employer or a company whose services you use), you may request certain actions with respect to your data. To exercise those rights, you should contact the person or company that entrusted the data to us, and we will assist them in fulfilling your request.
+                    If an individual employee, contractor, or customer whose personal data is hosted within your Netrom workspace contacts us directly to exercise rights under the NDPA 2023 (such as access, rectification, or erasure), our policy is to promptly notify your designated Organization Administrator within three (3) business days, unless prohibited by law. We will provide reasonable technical capabilities to enable your administrator to fulfill the request.
                   </p>
                 </section>
 
                 <hr className="border-gray-200" />
 
                 {/* PART III */}
-                <section className="space-y-4">
+                <section className="space-y-5">
                   <h2 className="text-xl sm:text-2xl font-bold text-[#0066cc]">
-                    Part III – General
+                    Part III – General Provisions, Security, Rights &amp; Governance
                   </h2>
 
+                  <h3 className="text-base sm:text-lg font-bold text-gray-900 pt-1">
+                    1. Information Security &amp; ISO/IEC 27001:2022 Safeguards
+                  </h3>
                   <p>
-                    There are some limitations to the privacy we can promise you. We will disclose personal information if it's necessary to comply with a legal obligation, prevent fraud, enforce an agreement, or protect the safety of our users. We do not currently honor Do Not Track signals from internet browsers; when a universal standard for processing them emerges, we will follow it.
+                    Primeguage Solutions Limited maintains an Information Security Management System (ISMS) engineered to align with <strong>ISO/IEC 27001:2022</strong> and <strong>ISO/IEC 27018:2019</strong> controls:
+                  </p>
+                  <ul className="list-disc pl-6 space-y-2 text-gray-600 text-sm">
+                    <li>
+                      <strong>Cryptographic Controls:</strong> All communications between your devices and Netrom systems are encrypted using Transport Layer Security (TLS 1.3). All database volumes, application backups, and file storage partitions are encrypted at rest using Advanced Encryption Standard with 256-bit keys (AES-256).
+                    </li>
+                    <li>
+                      <strong>Access Governance:</strong> Access to infrastructure is governed by Principle of Least Privilege (PoLP) and Zero Trust Network Architecture (ZTNA). Multi-Factor Authentication (MFA) and hardware security tokens are mandatory for all administrative access.
+                    </li>
+                    <li>
+                      <strong>Resilience &amp; Disaster Recovery:</strong> Production databases are subject to continuous write-ahead logging with automated geographic snapshot replication to guarantee Recovery Point Objectives (RPO) and Recovery Time Objectives (RTO).
+                    </li>
+                    <li>
+                      <strong>Vulnerability Governance:</strong> We perform automated static and dynamic application security testing (SAST/DAST) across our CI/CD pipelines, supplemented by periodic third-party penetration testing.
+                    </li>
+                  </ul>
+
+                  <h3 className="text-base sm:text-lg font-bold text-gray-900 pt-2">
+                    2. Data Retention &amp; Permanent Erasure Lifecycle
+                  </h3>
+                  <p>
+                    In accordance with the storage limitation principle of Section 25(1)(e) of the NDPA 2023:
+                  </p>
+                  <ul className="list-disc pl-6 space-y-2 text-gray-600 text-sm">
+                    <li>
+                      <strong>Active Subscriptions:</strong> Service Data is retained throughout the active term of your organization's subscription.
+                    </li>
+                    <li>
+                      <strong>Post-Termination Export Grace Period:</strong> Following subscription termination, Netrom retains Service Data in an accessible, read-only state for <strong>ninety (90) calendar days</strong> to allow your organization to export all operational records in standard, structured formats (CSV, JSON, PDF).
+                    </li>
+                    <li>
+                      <strong>Irrevocable Purging:</strong> Upon expiry of the 90-day grace period, all Service Data is automatically scheduled for cryptographic erasure and permanent physical destruction from production clusters and rotating backup archives in accordance with NIST SP 800-88 Rev. 1 media sanitization guidelines.
+                    </li>
+                  </ul>
+
+                  <h3 className="text-base sm:text-lg font-bold text-gray-900 pt-2">
+                    3. Cross-Border Data Transfers (Sections 41–43 NDPA 2023)
+                  </h3>
+                  <p>
+                    Where personal data is transferred across international boundaries for secure cloud hosting, backup redundancy, or transactional relay processing, Netrom ensures compliance with Sections 41, 42, and 43 of the NDPA 2023:
+                  </p>
+                  <ul className="list-disc pl-6 space-y-2 text-gray-600 text-sm">
+                    <li>
+                      Transfers are made exclusively to jurisdictions evaluated by the Nigeria Data Protection Commission (NDPC) as providing an adequate level of data protection.
+                    </li>
+                    <li>
+                      In the absence of an adequacy decision, transfers are governed by binding contractual commitments, including standard contractual clauses (SCCs) and Data Processing Agreements that guarantee enforceable data subject rights.
+                    </li>
+                    <li>
+                      Sovereign on-premises and local Nigerian data residency configurations are available upon request for qualifying public sector and regulated financial institutions.
+                    </li>
+                  </ul>
+
+                  <h3 className="text-base sm:text-lg font-bold text-gray-900 pt-2">
+                    4. Enforceable Rights of Data Subjects
+                  </h3>
+                  <p>
+                    Pursuant to Part VI (Sections 34–39) of the NDPA 2023, you and your employees enjoy the following statutory protections:
+                  </p>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs sm:text-sm pt-1">
+                    <div className="p-3 bg-gray-50 border border-gray-200 rounded-xl space-y-1">
+                      <strong className="text-gray-900">Right of Access (Section 34)</strong>
+                      <p className="text-gray-600 text-xs">Confirm whether we process your data and receive structured copies within statutory timelines.</p>
+                    </div>
+                    <div className="p-3 bg-gray-50 border border-gray-200 rounded-xl space-y-1">
+                      <strong className="text-gray-900">Right to Rectification (Section 35)</strong>
+                      <p className="text-gray-600 text-xs">Correct inaccurate, incomplete, or out-of-date records without undue delay.</p>
+                    </div>
+                    <div className="p-3 bg-gray-50 border border-gray-200 rounded-xl space-y-1">
+                      <strong className="text-gray-900">Right to Erasure (Section 36)</strong>
+                      <p className="text-gray-600 text-xs">Request permanent deletion of personal data where lawful retention grounds have expired.</p>
+                    </div>
+                    <div className="p-3 bg-gray-50 border border-gray-200 rounded-xl space-y-1">
+                      <strong className="text-gray-900">Right to Data Portability (Section 38)</strong>
+                      <p className="text-gray-600 text-xs">Obtain your personal data in a structured, machine-readable format for transfer to another provider.</p>
+                    </div>
+                    <div className="p-3 bg-gray-50 border border-gray-200 rounded-xl space-y-1">
+                      <strong className="text-gray-900">Right to Object &amp; Restrict</strong>
+                      <p className="text-gray-600 text-xs">Object to processing based on legitimate interests or request restriction while a dispute is reviewed.</p>
+                    </div>
+                    <div className="p-3 bg-gray-50 border border-gray-200 rounded-xl space-y-1">
+                      <strong className="text-gray-900">Right to Regulatory Recourse</strong>
+                      <p className="text-gray-600 text-xs">
+                        Lodge a formal complaint directly with the <strong>Nigeria Data Protection Commission (NDPC)</strong> via <a href="https://ndpc.gov.ng" target="_blank" rel="noopener noreferrer" className="text-[#1d61e7] underline">ndpc.gov.ng</a>.
+                      </p>
+                    </div>
+                  </div>
+
+                  <h3 className="text-base sm:text-lg font-bold text-gray-900 pt-2">
+                    5. Protection of Minors (Section 29 NDPA 2023)
+                  </h3>
+                  <p>
+                    Netrom is strictly an enterprise business-to-business operating platform designed for corporate entities, managers, and professional staff. Our software and websites are not directed toward children under eighteen (18) years of age. We do not knowingly solicit or collect personal information from minors.
                   </p>
 
+                  <h3 className="text-base sm:text-lg font-bold text-gray-900 pt-2">
+                    6. Statutory Data Protection Officer (DPO) Contact
+                  </h3>
                   <p>
-                    Third-party websites and social media widgets have their own separate privacy policies. Always check the relevant privacy policy before sharing personal information with third parties.
+                    Pursuant to Section 32 of the NDPA 2023, Primeguage Solutions Limited has appointed a designated Data Protection Officer responsible for overseeing regulatory compliance, executing Data Protection Impact Assessments (DPIAs), and serving as the primary contact point for data subjects and regulatory authorities:
                   </p>
 
-                  <p>
-                    You can always contact us to: ask questions about our privacy practices, request a Data Processing Addendum (DPA), alert us if you believe we have inadvertently collected personal information from a minor, or ask to have your personal information removed from our blogs or forums.
-                  </p>
-
-                  <div className="p-5 bg-gray-50 border border-gray-200 rounded-xl space-y-2 mt-4">
-                    <h4 className="font-bold text-gray-900 text-sm">
-                      Data Protection Officer &amp; Contact Details
-                    </h4>
-                    <p className="text-xs text-gray-600">
-                      If you have any questions about this Privacy Policy or Netrom's data governance practices, please reach out to our Data Protection Officer:
-                    </p>
-                    <div className="font-mono text-xs text-gray-800 space-y-1 pt-1">
-                      <div><strong>Entity:</strong> Primeguage Solutions Limited</div>
-                      <div><strong>Email:</strong> dpo@primeguage.co | privacy@netrom.ng</div>
-                      <div><strong>Location:</strong> Victoria Island, Lagos State, Nigeria</div>
+                  <div className="p-5 bg-gray-50 border border-gray-200 rounded-xl space-y-2 text-xs sm:text-sm font-sans mt-3">
+                    <div className="font-bold text-gray-900 text-sm flex items-center gap-1.5">
+                      <Building className="w-4 h-4 text-[#1d61e7]" />
+                      <span>Data Protection Officer &amp; Compliance Directorate</span>
+                    </div>
+                    <div className="space-y-1 text-gray-700 pt-1">
+                      <div><strong>Entity:</strong> Primeguage Solutions Limited (Creators &amp; Operators of Netrom)</div>
+                      <div><strong>Attn:</strong> Data Protection Officer</div>
+                      <div><strong>Official Email:</strong> <a href="mailto:dpo@primeguage.co" className="text-[#1d61e7] underline font-semibold">dpo@primeguage.co</a> &nbsp;|&nbsp; <a href="mailto:privacy@netrom.ng" className="text-[#1d61e7] underline font-semibold">privacy@netrom.ng</a></div>
+                      <div><strong>Registered Corporate Address:</strong> Victoria Island, Lagos State, Federal Republic of Nigeria</div>
+                      <div><strong>Statutory SLA:</strong> Acknowledgment within forty-eight (48) hours; formal response and resolution within thirty (30) calendar days.</div>
                     </div>
                   </div>
                 </section>
@@ -324,148 +501,215 @@ function PrivacyContent() {
             </div>
           )}
 
-          {/* COOKIE POLICY SUB-TAB */}
+          {/* TAB: COOKIES */}
           {activeCategory === "privacy" && activeSubTab === "cookies" && (
-            <div className="p-6 sm:p-12 max-w-4xl space-y-6 text-gray-700 leading-relaxed">
-              <div className="space-y-2">
+            <div className="p-6 sm:px-12 py-10 max-w-4xl space-y-6 text-gray-700 leading-relaxed text-sm sm:text-base">
+              <div className="space-y-2 border-b border-gray-200 pb-4">
                 <h1 className="text-2xl sm:text-3xl font-extrabold text-gray-900">
-                  Cookie Policy
+                  Cookie &amp; Tracking Technology Policy
                 </h1>
-                <p className="text-sm text-gray-500">
-                  Last updated: December 2025
+                <p className="text-xs text-gray-500 font-medium">
+                  Governed by the NDPA 2023 &amp; ISO/IEC 27701 Privacy Guidelines • Effective January 2026
                 </p>
               </div>
 
               <div className="bg-[#f2f4f7] p-6 rounded-xl space-y-3">
-                <h3 className="font-bold text-gray-900">
-                  Netrom's Cookie Philosophy
+                <h3 className="font-bold text-gray-900 text-base">
+                  Netrom's Anti-Surveillance Operating Philosophy
                 </h3>
-                <p className="text-sm text-gray-600 leading-relaxed">
-                  We use cookies and similar technologies to remember your preferences, secure your workspace sessions, and diagnose performance. <strong>We do not use third-party advertising cookies or participate in cross-site tracking ad networks.</strong>
+                <p className="text-xs sm:text-sm text-gray-700 leading-relaxed">
+                  Netrom employs cookies, session tokens, and local storage strictly to deliver authenticated workspace sessions, validate anti-CSRF security tokens, and maintain operational stability. <strong>We do not participate in cross-site behavioral advertising networks, commercial retargeting exchanges, or third-party data brokerage schemes.</strong>
                 </p>
               </div>
 
-              <div className="space-y-4 text-sm">
+              <div className="space-y-4 text-xs sm:text-sm">
                 <h3 className="text-base font-bold text-gray-900">
-                  Categories of Cookies We Use
+                  Categories of Cookies We Deploy
                 </h3>
+
                 <div className="space-y-3">
                   <div className="border border-gray-200 rounded-xl p-4 space-y-1">
                     <div className="flex items-center justify-between font-bold text-gray-900">
-                      <span>1. Strictly Necessary Cookies</span>
+                      <span>1. Strictly Necessary &amp; Security Cookies</span>
                       <span className="text-xs bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-bold">Always Active</span>
                     </div>
                     <p className="text-xs text-gray-600">
-                      Required for login authentication, secure routing, CSRF protection, and load balancing across our infrastructure.
+                      Indispensable for authenticating account access, enforcing multi-tenant partition boundaries, verifying Cross-Site Request Forgery (CSRF) tokens, and routing API traffic across clustered infrastructure. These cannot be disabled.
                     </p>
                   </div>
 
                   <div className="border border-gray-200 rounded-xl p-4 space-y-1">
                     <div className="flex items-center justify-between font-bold text-gray-900">
-                      <span>2. Functional Cookies</span>
-                      <span className="text-xs bg-blue-100 text-blue-800 px-2 py-0.5 rounded font-bold">Preferences</span>
+                      <span>2. Functional &amp; Workflow Preference Cookies</span>
+                      <span className="text-xs bg-blue-100 text-blue-800 px-2 py-0.5 rounded font-bold">Configurable</span>
                     </div>
                     <p className="text-xs text-gray-600">
-                      Saves your UI settings such as theme mode (dark/light), pinned or collapsed sidebars, and recent workspace views.
+                      Preserves your dashboard display preferences (e.g., Light or Dark mode, pinned or collapsed navigation drawers, and regional currency views) to ensure continuity between sessions.
                     </p>
                   </div>
 
                   <div className="border border-gray-200 rounded-xl p-4 space-y-1">
                     <div className="flex items-center justify-between font-bold text-gray-900">
-                      <span>3. Performance &amp; Analytics Cookies</span>
-                      <span className="text-xs bg-purple-100 text-purple-800 px-2 py-0.5 rounded font-bold">Telemetry</span>
+                      <span>3. First-Party Diagnostic Telemetry</span>
+                      <span className="text-xs bg-purple-100 text-purple-800 px-2 py-0.5 rounded font-bold">Configurable</span>
                     </div>
                     <p className="text-xs text-gray-600">
-                      First-party metrics that measure page load speed and application errors to ensure smooth workspace operation.
+                      Aggregated, privacy-preserving performance telemetry to identify frontend exceptions, render delays, and server latency bottlenecks. Data is never shared with third-party advertising brokers.
                     </p>
                   </div>
+                </div>
+
+                <div className="pt-2">
+                  <h4 className="font-bold text-gray-900 text-sm mb-1">
+                    Managing Cookie Preferences
+                  </h4>
+                  <p className="text-xs text-gray-600">
+                    You can adjust your cookie choices at any time through our interactive banner or within your web browser settings. Disabling essential cookies will prevent authentication to the Netrom workspace.
+                  </p>
                 </div>
               </div>
             </div>
           )}
 
-          {/* DPA SUB-TAB */}
+          {/* TAB: DATA PROCESSING ADDENDUM (DPA) */}
           {activeCategory === "privacy" && activeSubTab === "dpa" && (
-            <div className="p-6 sm:p-12 max-w-4xl space-y-6 text-gray-700 leading-relaxed">
-              <h1 className="text-2xl sm:text-3xl font-extrabold text-gray-900">
-                Data Processing Addendum (DPA)
-              </h1>
-              <p className="text-sm">
-                This Data Processing Addendum ("DPA") governs the processing of personal data by Primeguage Solutions Limited on behalf of enterprise customers using Netrom.
-              </p>
-              <div className="p-4 bg-gray-50 border border-gray-200 rounded-xl text-xs space-y-2">
-                <p>
-                  Enterprise customers requiring a signed DPA for NDPA 2023 or GDPR audit compliance can request our standard executed agreement by emailing <a href="mailto:dpo@primeguage.co" className="text-[#1d61e7] underline">dpo@primeguage.co</a>.
+            <div className="p-6 sm:px-12 py-10 max-w-4xl space-y-6 text-gray-700 leading-relaxed text-sm sm:text-base">
+              <div className="space-y-2 border-b border-gray-200 pb-4">
+                <h1 className="text-2xl sm:text-3xl font-extrabold text-gray-900">
+                  Data Processing Addendum (DPA)
+                </h1>
+                <p className="text-xs text-gray-500 font-medium">
+                  Standard Contractual Terms Governing Enterprise Data Custodianship under the NDPA 2023 &amp; GDPR
                 </p>
               </div>
-            </div>
-          )}
 
-          {/* TERMS OF SERVICE */}
-          {activeCategory === "terms" && (
-            <div className="p-6 sm:p-12 max-w-4xl space-y-6 text-gray-700 leading-relaxed">
-              <h1 className="text-2xl sm:text-3xl font-extrabold text-gray-900">
-                Terms of Service
-              </h1>
               <p className="text-sm">
-                These terms govern your organization’s access to and use of Netrom enterprise workspace software.
+                This Data Processing Addendum ("DPA") supplements the Netrom Enterprise Service Agreement between Primeguage Solutions Limited ("Processor") and the subscribing corporate entity ("Controller").
               </p>
+
               <div className="space-y-4 text-xs sm:text-sm text-gray-600">
-                <h3 className="font-bold text-gray-900">1. Acceptance of Terms</h3>
-                <p>
-                  By creating a Netrom workspace or accessing our software services, your organization agrees to be bound by these terms.
-                </p>
-                <h3 className="font-bold text-gray-900">2. Customer Ownership of Content</h3>
-                <p>
-                  All workflows, documents, requisitions, payroll data, and employee records remain the exclusive property of your organization.
+                <div className="p-4 bg-gray-50 border border-gray-200 rounded-xl space-y-2">
+                  <h3 className="font-bold text-gray-900 text-sm">Key Governance Commitments:</h3>
+                  <ul className="list-disc pl-5 space-y-1 text-xs">
+                    <li>Processing strictly on documented controller instructions.</li>
+                    <li>Technical &amp; organizational safeguards compliant with ISO/IEC 27001:2022.</li>
+                    <li>Mandatory notification of data breaches to the Controller within forty-eight (48) hours of confirmation.</li>
+                    <li>Assistance in executing Data Protection Impact Assessments (DPIAs) under Section 31 of the NDPA.</li>
+                    <li>Prompt return or certified destruction of all Service Data upon contract expiration.</li>
+                  </ul>
+                </div>
+
+                <p className="text-xs text-gray-500">
+                  Enterprise clients requiring a countersigned bilateral DPA for statutory compliance audits may request execution via <a href="mailto:dpo@primeguage.co" className="text-[#1d61e7] underline">dpo@primeguage.co</a>.
                 </p>
               </div>
             </div>
           )}
 
-          {/* SECURITY */}
+          {/* TAB: TERMS OF SERVICE */}
+          {activeCategory === "terms" && (
+            <div className="p-6 sm:px-12 py-10 max-w-4xl space-y-6 text-gray-700 leading-relaxed text-sm sm:text-base">
+              <div className="space-y-2 border-b border-gray-200 pb-4">
+                <h1 className="text-2xl sm:text-3xl font-extrabold text-gray-900">
+                  Enterprise Service Agreement
+                </h1>
+                <p className="text-xs text-gray-500 font-medium">
+                  Standard Commercial Terms &amp; Acceptable Use Conditions
+                </p>
+              </div>
+
+              <div className="space-y-4 text-xs sm:text-sm text-gray-600">
+                <h3 className="font-bold text-gray-900 text-sm">1. Software License &amp; Scope of Use</h3>
+                <p>
+                  Primeguage Solutions Limited grants your organization a non-exclusive, non-transferable enterprise subscription to access Netrom applications in accordance with your contracted tier.
+                </p>
+
+                <h3 className="font-bold text-gray-900 text-sm">2. Sole Ownership of Service Data</h3>
+                <p>
+                  The subscribing customer retains all legal title, copyright, proprietary rights, and intellectual property rights in and to all Service Data uploaded, generated, or processed through Netrom.
+                </p>
+
+                <h3 className="font-bold text-gray-900 text-sm">3. Service Level Commitments &amp; Availability</h3>
+                <p>
+                  Netrom targets 99.9% application uptime for core production modules, backed by redundant cloud clustering and automated failover architecture.
+                </p>
+              </div>
+            </div>
+          )}
+
+          {/* TAB: SECURITY */}
           {activeCategory === "security" && (
-            <div className="p-6 sm:p-12 max-w-4xl space-y-6 text-gray-700 leading-relaxed">
-              <h1 className="text-2xl sm:text-3xl font-extrabold text-gray-900">
-                Security Overview &amp; Architecture
-              </h1>
-              <p className="text-sm">
-                Netrom is engineered with enterprise-grade defenses to safeguard your mission-critical operations.
-              </p>
+            <div className="p-6 sm:px-12 py-10 max-w-4xl space-y-6 text-gray-700 leading-relaxed text-sm sm:text-base">
+              <div className="space-y-2 border-b border-gray-200 pb-4">
+                <h1 className="text-2xl sm:text-3xl font-extrabold text-gray-900">
+                  ISO/IEC 27001 Security Framework &amp; Controls
+                </h1>
+                <p className="text-xs text-gray-500 font-medium">
+                  Technical, Administrative, and Physical Safeguards
+                </p>
+              </div>
+
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
-                <div className="p-4 border border-gray-200 rounded-xl space-y-1">
-                  <div className="font-bold text-gray-900">256-Bit TLS &amp; AES Encryption</div>
-                  <p className="text-gray-600">All data in transit is protected via TLS 1.3. Databases and volume storage are encrypted at rest using AES-256.</p>
+                <div className="p-4 border border-gray-200 rounded-xl space-y-1.5">
+                  <div className="font-bold text-gray-900 flex items-center gap-1.5">
+                    <Lock className="w-4 h-4 text-[#1d61e7]" />
+                    <span>256-Bit Cryptographic Defense</span>
+                  </div>
+                  <p className="text-gray-600">
+                    Continuous TLS 1.3 transport encryption. AES-256 block cipher encryption for all database tables, requisition attachments, and automated backups at rest.
+                  </p>
                 </div>
-                <div className="p-4 border border-gray-200 rounded-xl space-y-1">
-                  <div className="font-bold text-gray-900">Multi-Tenant Logical Isolation</div>
-                  <p className="text-gray-600">Every organization's records reside behind strict cryptographic boundaries to prevent cross-tenant exposure.</p>
+
+                <div className="p-4 border border-gray-200 rounded-xl space-y-1.5">
+                  <div className="font-bold text-gray-900 flex items-center gap-1.5">
+                    <Server className="w-4 h-4 text-[#1d61e7]" />
+                    <span>Tenant Partition Isolation</span>
+                  </div>
+                  <p className="text-gray-600">
+                    Strict logical partition enforcement prevents cross-tenant data bleed. Role-based access control (RBAC) ensures users only see data permitted by their organizational role.
+                  </p>
                 </div>
               </div>
             </div>
           )}
 
-          {/* COMPLIANCE */}
+          {/* TAB: COMPLIANCE */}
           {activeCategory === "compliance" && (
-            <div className="p-6 sm:p-12 max-w-4xl space-y-6 text-gray-700 leading-relaxed">
-              <h1 className="text-2xl sm:text-3xl font-extrabold text-gray-900">
-                Regulatory Compliance (NDPA 2023)
-              </h1>
-              <p className="text-sm">
-                Primeguage Solutions Limited operates Netrom in full conformity with the Nigeria Data Protection Act (NDPA) 2023 and guidelines set forth by the Nigeria Data Protection Commission (NDPC).
-              </p>
+            <div className="p-6 sm:px-12 py-10 max-w-4xl space-y-6 text-gray-700 leading-relaxed text-sm sm:text-base">
+              <div className="space-y-2 border-b border-gray-200 pb-4">
+                <h1 className="text-2xl sm:text-3xl font-extrabold text-gray-900">
+                  Regulatory Compliance &amp; Statutory Alignment
+                </h1>
+                <p className="text-xs text-gray-500 font-medium">
+                  Nigeria Data Protection Act (NDPA) 2023 &amp; NDPC Regulatory Guidelines
+                </p>
+              </div>
+
+              <div className="p-4 bg-gray-50 border border-gray-200 rounded-xl text-xs space-y-2 text-gray-600">
+                <p>
+                  Primeguage Solutions Limited operates Netrom in rigorous compliance with the <strong>Nigeria Data Protection Act (NDPA) 2023</strong> enacted by the Federal Republic of Nigeria. Our operations undergo periodic Data Protection Audits conducted by licensed Data Protection Compliance Organizations (DPCO) registered with the Nigeria Data Protection Commission (NDPC).
+                </p>
+              </div>
             </div>
           )}
 
-          {/* POLICIES */}
+          {/* TAB: POLICIES */}
           {activeCategory === "policies" && (
-            <div className="p-6 sm:p-12 max-w-4xl space-y-6 text-gray-700 leading-relaxed">
-              <h1 className="text-2xl sm:text-3xl font-extrabold text-gray-900">
-                Acceptable Use &amp; Operational Policies
-              </h1>
-              <p className="text-sm">
-                Outlines standard expectations for workspace administrators and team members using Netrom tools.
-              </p>
+            <div className="p-6 sm:px-12 py-10 max-w-4xl space-y-6 text-gray-700 leading-relaxed text-sm sm:text-base">
+              <div className="space-y-2 border-b border-gray-200 pb-4">
+                <h1 className="text-2xl sm:text-3xl font-extrabold text-gray-900">
+                  Acceptable Use &amp; Operational Policies
+                </h1>
+                <p className="text-xs text-gray-500 font-medium">
+                  Standard Operating Procedures for Workspace Tenants
+                </p>
+              </div>
+
+              <div className="space-y-3 text-xs sm:text-sm text-gray-600">
+                <p>
+                  Users must not utilize Netrom infrastructure to transmit malware, engage in unauthorized penetration testing without prior authorization, or upload data in violation of applicable laws.
+                </p>
+              </div>
             </div>
           )}
         </main>
@@ -475,7 +719,7 @@ function PrivacyContent() {
       <footer className="border-t border-gray-200 bg-gray-50 py-6 text-xs text-gray-500">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-3">
           <div>
-            © 2026 Primeguage Solutions Limited. All rights reserved.
+            © 2026 Primeguage Solutions Limited. All rights reserved. • Netrom Enterprise Trust &amp; Legal Center
           </div>
           <div className="flex space-x-6">
             <Link href="/privacy" className="hover:text-gray-900 transition-colors">
@@ -485,7 +729,7 @@ function PrivacyContent() {
               Terms of Service
             </Link>
             <Link href="/privacy?tab=security" className="hover:text-gray-900 transition-colors">
-              Security
+              Security Overview
             </Link>
             <Link href="/privacy?tab=cookies" className="hover:text-gray-900 transition-colors">
               Cookie Policy
