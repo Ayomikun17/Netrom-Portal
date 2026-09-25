@@ -3,7 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { Globe } from "lucide-react";
-import { ScrollReveal } from "@/components/common";
+import { ScrollReveal, PrimeguageLogo } from "@/components/common";
 
 interface FooterProps {
   onOpenModal: (modalKey: string) => void;
@@ -42,15 +42,16 @@ export const Footer: React.FC<FooterProps> = ({ onOpenModal }) => {
               </button>
             </div>
 
-            <p className="text-xs text-emerald-200 mt-4 font-bold tracking-wider uppercase">
-              Netrom by{" "}
+            <p className="text-xs text-emerald-200 mt-4 font-bold tracking-wider uppercase flex items-center justify-center gap-1.5 flex-wrap">
+              <span>Netrom by</span>
               <a
                 href="https://primeguage.co/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="underline hover:text-white transition-colors"
+                className="inline-flex items-center gap-1.5 underline hover:text-white transition-colors"
               >
-                Primeguage Solutions
+                <PrimeguageLogo className="h-4 w-auto inline-block brightness-0 invert" />
+                <span>Primeguage Solutions</span>
               </a>
             </p>
           </div>
@@ -261,17 +262,18 @@ export const Footer: React.FC<FooterProps> = ({ onOpenModal }) => {
 
         {/* Bottom Copyright & Legal Links */}
         <div className="pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-gray-500 space-y-4 md:space-y-0">
-          <div>
-            © 2026{" "}
+          <div className="flex items-center gap-1.5 flex-wrap">
+            <span>© 2026</span>
             <a
               href="https://primeguage.co/"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-gray-300 underline transition-colors"
+              className="inline-flex items-center gap-1.5 hover:text-gray-300 underline transition-colors"
             >
-              Primeguage Solutions Limited
+              <PrimeguageLogo className="h-3.5 w-auto inline-block brightness-0 invert opacity-75" />
+              <span>Primeguage Solutions Limited</span>
             </a>
-            . All rights reserved.
+            <span>. All rights reserved.</span>
           </div>
           <div className="flex space-x-6">
             <Link
