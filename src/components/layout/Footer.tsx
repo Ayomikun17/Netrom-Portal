@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import { Globe } from "lucide-react";
 import { ScrollReveal } from "@/components/common";
 
@@ -273,27 +274,24 @@ export const Footer: React.FC<FooterProps> = ({ onOpenModal }) => {
             . All rights reserved.
           </div>
           <div className="flex space-x-6">
-            <button
-              type="button"
-              onClick={() => onOpenModal("privacy")}
-              className="hover:text-gray-400 transition-colors cursor-pointer"
+            <Link
+              href="/privacy"
+              className="hover:text-gray-400 transition-colors"
             >
               Privacy Policy
-            </button>
-            <button
-              type="button"
-              onClick={() => onOpenModal("privacy")}
-              className="hover:text-gray-400 transition-colors cursor-pointer"
+            </Link>
+            <Link
+              href="/privacy?tab=terms"
+              className="hover:text-gray-400 transition-colors"
             >
               Terms of Service
-            </button>
-            <button
-              type="button"
-              onClick={() => onOpenModal("privacy")}
-              className="hover:text-gray-400 transition-colors cursor-pointer"
+            </Link>
+            <Link
+              href="/privacy?tab=security"
+              className="hover:text-gray-400 transition-colors"
             >
               Security
-            </button>
+            </Link>
             <button
               type="button"
               onClick={() => onOpenModal("cookie")}

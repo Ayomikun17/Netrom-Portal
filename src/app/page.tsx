@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { Header, Footer } from "@/components/layout";
 import {
   HeroSection,
@@ -21,10 +22,18 @@ import {
 import { CookieConsentBanner } from "@/components/common";
 
 export default function Home() {
+  const router = useRouter();
   const [activeModal, setActiveModal] = useState<string | null>(null);
   const [notificationsOpen, setNotificationsOpen] = useState(false);
   const [customerModalOpen, setCustomerModalOpen] = useState(false);
   const dashboardSectionRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (activeModal === "privacy" || activeModal === "Privacy Policy") {
+      router.push("/privacy");
+      setActiveModal(null);
+    }
+  }, [activeModal, router]);
 
   const scrollToDashboard = () => {
     dashboardSectionRef.current?.scrollIntoView({ behavior: "smooth" });
