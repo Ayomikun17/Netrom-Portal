@@ -526,7 +526,8 @@ function PrivacyContent() {
                       <div><strong>Operating Entity:</strong> Primeguage Solutions Limited (Creators of Netrom)</div>
                       <div><strong>Designation:</strong> Data Protection Officer &amp; Legal Counsel</div>
                       <div><strong>Direct DPO Email:</strong> <a href="mailto:dpo@primeguage.co" className="text-[#1d61e7] underline font-bold">dpo@primeguage.co</a> &nbsp;|&nbsp; <a href="mailto:privacy@netrom.ng" className="text-[#1d61e7] underline font-bold">privacy@netrom.ng</a></div>
-                      <div><strong>Corporate Headquarters:</strong> Victoria Island, Lagos State, Federal Republic of Nigeria</div>
+                      <div><strong>Corporate Headquarters:</strong> No. 31 Adamu Ciroma Crescent, Jabi, Abuja, Federal Republic of Nigeria</div>
+                      <div><strong>Telephone:</strong> <a href="tel:+2348035437501" className="text-[#1d61e7] hover:underline font-bold">+234 803 543 7501</a></div>
                       <div><strong>Statutory SLA:</strong> Formal acknowledgment within forty-eight (48) hours; substantive resolution within thirty (30) calendar days.</div>
                     </div>
                   </div>
@@ -784,7 +785,7 @@ function PrivacyContent() {
                   3. Limitation of Liability &amp; Dispute Resolution
                 </h2>
                 <p>
-                  To the maximum extent permitted under Nigerian law, neither party shall be liable for indirect, punitive, or consequential damages. Any commercial dispute arising out of this Agreement shall first be submitted to good-faith mediation in Lagos, Nigeria, before resort to arbitration under the Arbitration and Mediation Act (AMA) 2023.
+                  To the maximum extent permitted under Nigerian law, neither party shall be liable for indirect, punitive, or consequential damages. Any commercial dispute arising out of this Agreement shall first be submitted to good-faith mediation in Abuja (FCT), Nigeria, before resort to arbitration under the Arbitration and Mediation Act (AMA) 2023.
                 </p>
               </section>
             </div>

@@ -508,7 +508,7 @@ export function TeamsAcrossDepartmentsSection() {
                         { label: "Total Revenue", value: "₦48.2M", note: "↑ +12.4% vs last Q", color: "text-emerald-400" },
                         { label: "Operating Expenses", value: "₦32.6M", note: "within budget", color: "text-amber-400" },
                         { label: "Net Profit Margin", value: "32.3%", note: "Healthy margin", color: "text-blue-400" },
-                        { label: "Cash Reserves", value: "₦15.6M", note: "Lagos Main Account", color: "text-indigo-400" },
+                        { label: "Cash Reserves", value: "₦15.6M", note: "Abuja Treasury Account", color: "text-indigo-400" },
                         { label: "Accounts Receivable", value: "₦6.4M", note: "18 open invoices", color: "text-teal-400" },
                         { label: "Accounts Payable", value: "₦3.1M", note: "9 vendor bills due", color: "text-rose-400" },
                         { label: "Monthly Burn Rate", value: "₦10.8M", note: "~4.4 months runway", color: "text-orange-400" },
@@ -709,7 +709,7 @@ export function TeamsAcrossDepartmentsSection() {
                         },
                         {
                           id: "REQ-1088",
-                          title: "Lagos Office Supplies & Stationery",
+                          title: "Headquarters Office Supplies & Stationery",
                           dept: "Admin",
                           amount: "₦340,000",
                           requester: "Blessing Adebayo",

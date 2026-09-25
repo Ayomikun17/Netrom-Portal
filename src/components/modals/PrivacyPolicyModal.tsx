@@ -18,6 +18,7 @@ import {
   CheckCircle2,
   Search,
 } from "lucide-react";
+import { PrimeguageLogo } from "@/components/common";
 
 interface PrivacyPolicyModalProps {
   isOpen: boolean;
@@ -115,9 +116,12 @@ export const PrivacyPolicyModal: React.FC<PrivacyPolicyModalProps> = ({
                   Zero Third-Party Ads
                 </span>
               </div>
-              <p className="text-xs text-gray-400 mt-0.5 font-normal">
-                Operated by Primeguage Solutions Limited • Effective: September 2026
-              </p>
+              <div className="text-xs text-gray-400 mt-1 font-normal flex items-center gap-1.5 flex-wrap">
+                <span>Operated by</span>
+                <PrimeguageLogo size="sm" />
+                <span className="font-semibold text-gray-300">Primeguage Solutions Limited</span>
+                <span>• Effective: September 2026</span>
+              </div>
             </div>
           </div>
 
@@ -680,10 +684,15 @@ export const PrivacyPolicyModal: React.FC<PrivacyPolicyModalProps> = ({
                   Official DPO Contact Office
                 </div>
                 <div className="space-y-1.5 text-gray-300">
-                  <div><strong>Entity:</strong> Primeguage Solutions Limited (Creators of Netrom)</div>
-                  <div><strong>Designation:</strong> Data Protection Officer & Legal Counsel</div>
-                  <div><strong>Email:</strong> dpo@primeguage.co &nbsp;|&nbsp; privacy@netrom.ng</div>
-                  <div><strong>Physical Address:</strong> Victoria Island, Lagos State, Nigeria</div>
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <strong>Entity:</strong>
+                    <PrimeguageLogo size="sm" />
+                    <span>Primeguage Solutions Limited (Creators &amp; Operators of Netrom)</span>
+                  </div>
+                  <div><strong>Designation:</strong> Data Protection Officer &amp; Legal Counsel</div>
+                  <div><strong>Email:</strong> dpo@primeguage.co &nbsp;|&nbsp; info@primeguage.co &nbsp;|&nbsp; privacy@netrom.ng</div>
+                  <div><strong>Telephone:</strong> +234 803 543 7501</div>
+                  <div><strong>Corporate Headquarters:</strong> No. 31 Adamu Ciroma Crescent, Jabi, Abuja, Federal Republic of Nigeria</div>
                   <div><strong>Response SLA:</strong> Formal acknowledgment within 48 hours; substantive resolution within 30 calendar days.</div>
                 </div>
               </div>
