@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { Globe, ChevronDown, X, Menu } from "lucide-react";
-import { ZohoOneLogo } from "@/components/common";
+import { NetromOneLogo } from "@/components/common";
 import { secondaryNavLinks } from "@/data/navigation";
 
 interface HeaderProps {
@@ -33,7 +33,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenModal, onSelectDept }) => 
         <div className="flex items-center justify-between h-14 md:h-16">
           {/* Left: Netrom Logo */}
           <div className="flex items-center flex-shrink-0">
-            <ZohoOneLogo />
+            <NetromOneLogo />
           </div>
 
           {/* Center Navigation Links */}

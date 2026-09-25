@@ -1,4 +1,4 @@
-export * from "./ZohoLogo";
-export * from "./ZohoOneLogo";
+export * from "./NetromLogo";
+export * from "./NetromOneLogo";
 export * from "./ScrollReveal";
 export * from "./RedHotspot";

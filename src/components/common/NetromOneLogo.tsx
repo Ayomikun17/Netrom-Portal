@@ -1,6 +1,6 @@
 import React from "react";
 
-export const ZohoOneLogo: React.FC = () => (
+export const NetromOneLogo: React.FC = () => (
   <div className="flex items-center space-x-2">
     <div className="relative w-8 h-8 flex items-center justify-center bg-[#0066cc] rounded-md shadow-md">
       <span className="text-white font-black text-xs tracking-tighter">N</span>
@@ -16,4 +16,7 @@ export const ZohoOneLogo: React.FC = () => (
   </div>
 );
 
-export default ZohoOneLogo;
+// Backward-compatible alias
+export const NetromWorkspaceLogo = NetromOneLogo;
+
+export default NetromOneLogo;

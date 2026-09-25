@@ -23,7 +23,7 @@ export interface PlatformAppItem {
   color: string;
 }
 
-export const ALL_ZOHO_APPS: PlatformAppItem[] = [
+export const ALL_NETROM_APPS: PlatformAppItem[] = [
   {
     id: "crm",
     name: "CRM",
@@ -121,3 +121,6 @@ export const ALL_ZOHO_APPS: PlatformAppItem[] = [
     color: "text-blue-600",
   },
 ];
+
+// Backward-compatible alias
+export const ALL_ZOHO_APPS = ALL_NETROM_APPS;
